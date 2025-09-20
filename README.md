@@ -27,17 +27,6 @@ O sistema processa um fluxo contínuo de transações em tempo real, aplicando r
 ## 🏛️ Arquitetura do Sistema
 
 O fluxo de dados é totalmente orientado a eventos, com o Kafka atuando como o sistema nervoso central da arquitetura.
-
-```mermaid
-graph TD
-    subgraph Cluster Kubernetes
-        A[Microserviço <br> Gerador de Transações] -->|Publica em JSON| B{Kafka Topic <br> 'transacoes'};
-        B -->|Consome| C[Microserviço <br> Processador de Fraudes];
-        C -->|Publica Fraudes| D{Kafka Topic <br> 'fraudes-detectadas'};
-        D -->|Consome Alertas| E[Microserviço <br> Serviço de Notificação];
-    end
-```
-
 1.  **Gerador de Transações:** Simula um feed de pagamentos, gerando transações aleatórias e publicando-as no tópico `transacoes`.
 2.  **Processador de Fraudes:** Consome do tópico `transacoes`, aplica regras de negócio (ex: valor > 5000) e, se uma fraude é detectada, publica a transação no tópico `fraudes-detectadas`.
 3.  **Serviço de Notificação:** Consome do tópico `fraudes-detectadas` e simula o envio de um alerta para o usuário final.
@@ -70,8 +59,8 @@ Existem duas maneiras de executar a aplicação completa: a forma simples com Do
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git](https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git)
-    cd SEU-REPOSITORIO
+    git clone (https://github.com/SdneyFernandes/sistema-deteccao-fraudes-kafka.git)
+    cd sistema-deteccao-fraudes-kafka
     ```
 
 2.  **Suba a aplicação:**
@@ -161,10 +150,3 @@ Existem duas maneiras de executar a aplicação completa: a forma simples com Do
 ```
 
 ---
-
-## 👤 Autor
-
-**Sidney Fernandes**
-
--   [LinkedIn](https://www.linkedin.com/in/SEU-PERFIL-DO-LINKEDIN/)
--   [GitHub](https://github.com/SdneyFernandes)
