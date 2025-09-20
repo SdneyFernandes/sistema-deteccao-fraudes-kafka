@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servico-notificacao
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: servico-notificacao
+  template:
+    metadata:
+      labels:
+        app: servico-notificacao
+    spec:
+      containers:
+        - name: servico-notificacao
+          image: servico-notificacao:1.0
+          imagePullPolicy: IfNotPresent

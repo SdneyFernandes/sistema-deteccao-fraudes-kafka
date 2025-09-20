@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gerador-transacoes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gerador-transacoes
+  template:
+    metadata:
+      labels:
+        app: gerador-transacoes
+    spec:
+      containers:
+        - name: gerador-transacoes
+          image: gerador-transacoes:1.0
+          imagePullPolicy: IfNotPresent

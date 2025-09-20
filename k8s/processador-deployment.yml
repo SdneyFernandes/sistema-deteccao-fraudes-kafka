@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: processador-fraudes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: processador-fraudes
+  template:
+    metadata:
+      labels:
+        app: processador-fraudes
+    spec:
+      containers:
+        - name: processador-fraudes
+          image: processador-fraudes:1.0
+          imagePullPolicy: IfNotPresent
